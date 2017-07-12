@@ -32,3 +32,4 @@ I use Docker to test my Ansible roles and playbooks on multiple OSes using CI to
 Created in 2016 by [Jeff Geerling](http://jeffgeerling.com/), author of [Ansible for DevOps](https://www.ansiblefordevops.com/).
 
 Slightly modified by Brett Delle Grazie to ensure systemd is available for testing of roles with services
+Additional content from [j8r/dockerfiles](https://github.com/j8r/dockerfiles) and [solita/docker-systemd](https://github.com/solita/docker-systemd)
