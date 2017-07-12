@@ -3,10 +3,7 @@ MAINTAINER "Brett Delle Grazie" <brett.dellegrazie@gmail.com>
 
 FROM ubuntu:16.04
 
-ENV container docker
-ENV DEBIAN_FRONTEND noninteractive
-ENV DEBIAN_PRIORITY critical
-ENV LANG=C.UTF-8
+ENV container=docker DEBIAN_FRONTEND=noninteractive DEBIAN_PRIORITY=critical LANG=C.UTF-8
 
 RUN sed -i 's/# deb/deb/g' /etc/apt/sources.list
 
