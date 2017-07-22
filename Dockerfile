@@ -11,11 +11,11 @@ RUN sed -i 's/# deb/deb/g' /etc/apt/sources.list
 RUN echo 'APT::Install-Recommends "0";\nAPT::Get::Assume-Yes "true";\nAPT::Install-Suggests "0";\n' > /etc/apt/apt.conf.d/01buildconfig
 
 RUN apt-get update &&\
- apt-get install -y systemd systemd-sysv systemd-cron rsyslog &&\
+ apt-get install -y systemd systemd-cron rsyslog &&\
  apt-get clean &&\
  rm -rf /usr/share/doc /usr/share/man /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-RUN cd /lib/systemd/system/sysinit.target.wants/; ls | grep -v systemd-tmpfiles-setup | xargs rm -f $1 \
+RUN (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == systemd-tmpfiles-setup.service ] || rm -f $i; done); \
  rm -f /lib/systemd/system/multi-user.target.wants/*;\
  rm -f /etc/systemd/system/*.wants/*;\
  rm -f /lib/systemd/system/local-fs.target.wants/*; \
