@@ -15,7 +15,7 @@ RUN apt-get update &&\
  apt-get clean &&\
  rm -rf /usr/share/doc /usr/share/man /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-RUN (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == systemd-tmpfiles-setup.service ] || rm -f $i; done); \
+RUN (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do if [ $i != systemd-tmpfiles-setup.service ] ; then rm -f $i; fi; done); \
  rm -f /lib/systemd/system/multi-user.target.wants/*;\
  rm -f /etc/systemd/system/*.wants/*;\
  rm -f /lib/systemd/system/local-fs.target.wants/*; \
